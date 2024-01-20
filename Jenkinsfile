@@ -23,6 +23,7 @@ pipeline {
             steps {
                 sh "sudo apt install tomcat8 -y"
             }
+        }
         stage('Deploy warfile') {
             steps {
                 sh "sudo cp target/CloudenabledWebApp.war /var/lib/tomcat8/webapps"
