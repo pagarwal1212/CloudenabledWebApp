@@ -8,19 +8,24 @@ pipeline {
                sh "mvn clean"
             }
         }
-        stage('install') {
+        stage('install maven') {
             steps {
                 sh "sudo apt install maven -y"
             }
         }
-        stage('Test & Compile') {
+        stage('Compile & Package') {
             steps {
                 sh "mvn compile"
+                sh "mvn package"
             }
         }
-        stage('package') {
+        stage('Install Tomcat') {
             steps {
-                sh "mvn package"
+                sh "sudo apt install tomcat8 -y"
+            }
+        stage('Deploy warfile') {
+            steps {
+                sh "sudo cp target/CloudenabledWebApp.war /var/lib/tomcat8/webapps"
             }
         }
     }
