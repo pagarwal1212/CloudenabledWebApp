@@ -13,6 +13,15 @@ pipeline {
                 sh "sudo apt install maven -y"
             }
         }
-        
+        stage('Test & Compile') {
+            steps {
+                sh "mvn Compile"
+            }
+        }
+        stage('package') {
+            steps {
+                sh "mvn package"
+            }
+        }
     }
 }
