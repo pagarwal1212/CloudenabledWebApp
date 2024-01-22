@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Deploy warfile') {
             steps {
-               "sudo cp target/CloudenabledWebApp.war /var/lib/tomcat9/webapps"
+               sh "sudo cp target/CloudenabledWebApp.war /var/lib/tomcat9/webapps"
             }
         }
     }
