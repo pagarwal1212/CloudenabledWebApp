@@ -15,18 +15,18 @@ pipeline {
         }
         stage('Compile & Package') {
             steps {
-                sh "mvn compile -f CloudenabledWebApp"
-                sh "mvn package -f CloudenabledWebApp"
+                sh "mvn compile"
+                sh "mvn package"
             }
         }
         stage('Install Tomcat') {
             steps {
-               // sh "sudo apt install tomcat8 -y"
+               sh "sudo apt install tomcat9 -y"
             }
         }
         stage('Deploy warfile') {
             steps {
-               // sh "sudo cp target/CloudenabledWebApp.war /var/lib/tomcat8/webapps"
+               "sudo cp target/CloudenabledWebApp.war /var/lib/tomcat9/webapps"
             }
         }
     }
